@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container responsive">
+        <div class="logo"><img src="./images/logo.png" alt=""></div>
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">MSSV:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">PASSWORD:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="LOGIN">
+        </form>
+        <div class="alert alert-danger" id="error" role="alert">
+            <strong>ERROR!</strong> Invalid username or password.
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./js/login.js"></script> <!-- Chèn file JavaScript ở dưới đây -->
+
+    <script>
+        $(document).ready(function() {
+            $('#error').hide();
+
+            $('#username').on('focus', function() {
+                $('#error').hide();
+            });
+            $('#password').on('focus', function() {
+                $('#error').hide();
+            });
+        });
+    </script>
+</body>
+</html>

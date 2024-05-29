@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán học phí</title>
+    <!-- Favicon - logo in browser tab -->
+    <link rel="icon" type="image/jpg" href="static/img/favicon.png"/>
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="./css/homepage.css">
+    <link type="text/css" rel="stylesheet" href="./css/Ocss.css"/>
+    <link type="text/css" rel="stylesheet" href="./css/loading.css"/>
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js" integrity="sha512-wstvQlySDtT//3yKfbxpy8AS5b4UQ0tnItav8dGCVLGO3u/Ymb6mUEgVzDL8a/DXdtiuhsTj2ElDsXQ+E2cDYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        /* CSS tùy chỉnh sẽ được thêm vào đây */
+        .transaction-history {
+            height: 500px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-4">
+                <span class="display-6 fs-2 fw-bolder text-pink-medium">IBanking</span>
+            </a>
+            <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4 d-flex align-items-center">
+
+                    <li class="ps-0 nav-item d-lg-none mt-2 mt-lg-0">
+                        <button data-bs-toggle="collapse" data-bs-target="#collap-user" id="btn-collap-user"
+                            class="border-0 bg-secondary-subtle p-0">
+                            <i class="bi bi-person text-pink"></i>
+                            Xin chào <mark class="username">Khách</mark>
+                            <i class="bi bi-arrow-bar-down align-text-top"></i>
+                        </button>
+                        <div id="collap-user" class="collapse">
+                            <ul class="list-group list-group-flush">
+                                <li
+                                    class="list-group-item bg-secondary-subtle text-decoration-underline text-muted box-click">
+                                    <i class="bi bi-arrow-return-right text-pink"></i>
+                                    <a id="signout1" class="text-dark text-decoration-none">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="d-none d-lg-flex">
+                    <div class="dropdown">
+                        <img src="./images/user_default.png" id="img" style="width: 50px;" type="button"
+                            aria-haspopup="true" aria-expanded="false"
+                            class="img-fluid border border-4 rounded-circle dropdown-toggle"
+                            data-bs-toggle="dropdown"></img>
+                        <ul class="dropdown-menu text-right dropdown-menu-end mt-1 border border-4">
+                            <li><a class="dropdown-item" id="signout" style="cursor: pointer;">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Cột cho form thanh toán -->
+            <div class="col-md-8">
+                <form>
+                    <!-- Người nộp tiền -->
+                    <fieldset disabled>
+                        <legend>Thông tin người nộp tiền:</legend>
+                        <div class="form-group">
+                            <label for="payerName">Họ và tên</label>
+                            <input type="text" id="payerName" class="form-control" placeholder="Nguyễn Văn A">
+                        </div>
+                        <div class="form-group">
+                            <label for="payerPhone">Số điện thoại</label>
+                            <input type="text" id="payerPhone" class="form-control" placeholder="0123456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="payerEmail">Email</label>
+                            <input type="email" id="payerEmail" class="form-control" placeholder="email@example.com">
+                        </div>
+                    </fieldset>
+
+                    <!-- Thông tin học phí -->
+                    <fieldset>
+                        <legend>Thông tin học phí:</legend>
+                        <div class="form-group">
+                            <label for="studentID">Mã số sinh viên</label>
+                            <input type="text" id="studentID" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="studentName">Họ tên sinh viên</label>
+                            <input type="text" id="studentName" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="tuitionAmount">Số tiền cần nộp</label>
+                            <input type="number" id="tuitionAmount" class="form-control" disabled>
+                        </div>
+                    </fieldset>
+
+                    <!-- Thông tin thanh toán -->
+                    <fieldset>
+                        <legend>Thông tin thanh toán:</legend>
+                        <div class="form-group">
+                            <label for="availableBalance">Số dư khả dụng</label>
+                            <input type="text" id="availableBalance" class="form-control" disabled>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="terms">
+                            <label class="form-check-label" for="terms">Tôi đồng ý với các điều khoản</label>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-primary mt-3" disabled>Xác nhận giao dịch</button>
+                </form>
+            </div>
+
+            <!-- Cột cho lịch sử giao dịch -->
+            <div class="col-md-4">
+                <h2 class="mb-4">Lịch sử giao dịch</h2>
+                <div class="transaction-history">
+                    <!-- Danh sách lịch sử giao dịch sẽ được thêm vào đây -->
+                    <ul id="transactionList" class="list-group">
+                        <!-- Các mục lịch sử giao dịch sẽ được thêm vào đây thông qua JavaScript -->
+                    </ul>
+                </div>
+            </div>            
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="otpModalLabel">Nhập mã OTP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="otpForm">
+                        <div class="mb-3">
+                            <label for="otpCode" class="form-label">Mã OTP</label>
+                            <input type="text" class="form-control" id="otpCode"
+                                placeholder="Nhập mã OTP được gửi qua email">
+                        </div>
+                        <button type="button" class="btn btn-primary" id="sendOTP">Gửi Lại</button>
+                        <button type="submit" class="btn btn-success">Xác nhận</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/home.js"></script>
+
+</html>

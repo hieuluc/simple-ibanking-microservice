@@ -1,0 +1,18 @@
+# Bước 1: Chọn một image cơ bản
+FROM python:3.11-slim
+
+# Bước 2: Thiết lập thư mục làm việc
+WORKDIR /app
+
+# Bước 3: Sao chép các tệp yêu cầu và cài đặt dependencies
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+
+# Bước 4: Sao chép mã nguồn của bạn vào container
+COPY ./app /app
+
+# Bước 5: Chỉ định cổng mà container sẽ lắng nghe
+EXPOSE 8000
+
+# Bước 6: Định nghĩa lệnh để chạy ứng dụng
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

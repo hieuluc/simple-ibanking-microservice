@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  service1:
+    build: ./user_service
+    ports:
+      - "8001:8000"
+  service2:
+    build: ./tution_service
+    ports:
+      - "8002:8000"
+  service3:
+    build: ./email_service
+    ports:
+      - "8003:8000"
+  service4:
+    build: ./transaction_service
+    ports:
+      - "8004:8000"
+  service5:
+    build: ./api_gateway
+    ports:
+      - "8005:8000"
